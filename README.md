@@ -23,6 +23,7 @@ jobs:
       uses: wei/rclone@v1
       env:
         RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        PRUGE_IF_EXISTS: <dest>:<dest_path>
       with:
         args: copy <source>:<source_path> <dest>:<dest_path>
 ```
@@ -34,9 +35,6 @@ docker run --rm -e "RCLONE_CONF=$(cat ~/.config/rclone/rclone.conf)" $(docker bu
   copy <source>:<source_path> <dest>:<dest_path>
 ```
 
-## Author
-[Wei He](https://github.com/wei) _github@weispot.com_
+### Update latest tag
+git push --delete origin latest && git tag --delete latest && git tag -a -m "update" latest && git push origin --tags
 
-
-## License
-[MIT](https://wei.mit-license.org)
